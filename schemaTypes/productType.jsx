@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-// import CustomInput from './CustomInput.jsx'
+import CustomInput from '../components/CustomInput'
 
 const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
@@ -94,81 +94,10 @@ export const productType = defineType({
       title: 'Total Stock',
       type: 'number',
       readOnly:true,
-      // components: {
-      //   input:CustomInput
-      // },
+      components: {
+        input: CustomInput
+      },
       hidden: ({parent}) => !parent?.sizes
     }),
   ],
 })
-
-// Sure! Here's the example using newer React syntax, with functional components and hooks:
-
-// 1. Define a custom data structure for your schema in your schema definition file (schema.js):
-
-// ```javascript
-// export default {
-//   name: 'myDocument',
-//   title: 'My Document',
-//   fields: [
-//     {
-//       name: 'numbers',
-//       title: 'Numbers',
-//       type: 'array',
-//       of: [{type: 'number'}]
-//     },
-//     {
-//       name: 'sum',
-//       title: 'Sum',
-//       type: 'number'
-//     }
-//   ]
-// }
-// ```
-
-// 2. Create a custom input component to handle the logic for summing up the numbers. You can do this by creating a new file (e.g., NumberSumInput.js) and defining the component like this:
-
-// ```javascript
-// import { useEffect } from 'react'
-// import { useDocumentOperation } from '@sanity/react-hooks'
-
-// const NumberSumInput = ({ type, document }) => {
-//   const { patch, publish } = useDocumentOperation()
-
-//   useEffect(() => {
-//     const numbers = document.numbers || []
-//     const sum = numbers.reduce((acc, num) => acc + num, 0)
-    
-//     patch.execute([{ set: { sum } }])
-//   }, [document.numbers])
-
-//   return null
-// }
-
-// export default NumberSumInput
-// ```
-
-// 3. Update your schema definition to use the custom input component for the 'sum' field:
-
-// ```javascript
-// export default {
-//   name: 'myDocument',
-//   title: 'My Document',
-//   fields: [
-//     {
-//       name: 'numbers',
-//       title: 'Numbers',
-//       type: 'array',
-//       of: [{type: 'number'}]
-//     },
-//     {
-//       name: 'sum',
-//       title: 'Sum',
-//       type: 'number',
-//       inputComponent: NumberSumInput
-//     }
-//   ]
-// }
-// ```
-
-// Now, when you enter multiple numbers into the 'numbers' field, the 'sum' field will automatically display the sum of those numbers. The custom input component uses the `useDocumentOperation` hook provided by Sanity to handle the sum calculation and update the 'sum' field with the correct value.
