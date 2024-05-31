@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import CustomInput from '../components/CustomInput'
 
 const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
@@ -47,22 +46,22 @@ export const productType = defineType({
       title: 'Tags',
       type: 'array',
       of: [{type: 'string'}],
-      options:{
+      options: {
         list: [
-          {title: 'Men', value:'men'},
-          {title: 'Women', value:'women'},
-          {title: 'Kids', value:'kids'},
-          {title: 'Running', value:'running'},
-          {title: 'Basket', value:'basket'},
-          {title: 'Soccer', value:'soccer'},
-          {title: 'Skate', value:'skate'},
-          {title: 'Boots', value:'boots'},
-          {title: 'Workout', value:'workout'},
-          {title: 'Golf', value:'golf'},
-          {title: 'Sandals', value:'sandals'},
+          {title: 'Men', value: 'men'},
+          {title: 'Women', value: 'women'},
+          {title: 'Kids', value: 'kids'},
+          {title: 'Running', value: 'running'},
+          {title: 'Basket', value: 'basket'},
+          {title: 'Soccer', value: 'soccer'},
+          {title: 'Skate', value: 'skate'},
+          {title: 'Boots', value: 'boots'},
+          {title: 'Workout', value: 'workout'},
+          {title: 'Golf', value: 'golf'},
+          {title: 'Sandals', value: 'sandals'},
         ],
-        layout:'grid'
-      }
+        layout: 'grid',
+      },
     }),
     defineField({
       name: 'sizes',
@@ -76,28 +75,18 @@ export const productType = defineType({
               name: 'size',
               title: 'Size',
               type: 'number',
-              options:{
-                list:[34,35,36,37,38,39,40,41,42,43,44,45]
-              }
+              options: {
+                list: [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+              },
             },
             {
               name: 'stock',
               title: 'Stock',
-              type: 'number'
+              type: 'number',
             },
-          ]
-        }
-      ]
-    }),     
-    defineField({
-      name: 'totalStock',
-      title: 'Total Stock',
-      type: 'number',
-      readOnly:true,
-      components: {
-        input: CustomInput
-      },
-      hidden: ({parent}) => !parent?.sizes
+          ],
+        },
+      ],
     }),
   ],
 })
