@@ -51,6 +51,7 @@ export const productType = defineType({
           {title: 'Men', value: 'men'},
           {title: 'Women', value: 'women'},
           {title: 'Kids', value: 'kids'},
+          {title: 'Unisex', value: 'unisex'},
           {title: 'Running', value: 'running'},
           {title: 'Basket', value: 'basket'},
           {title: 'Soccer', value: 'soccer'},
