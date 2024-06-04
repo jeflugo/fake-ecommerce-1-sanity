@@ -1,7 +1,5 @@
 import {defineField, defineType} from 'sanity'
 
-const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
-
 export const productType = defineType({
   name: 'product',
   title: 'Product',
@@ -20,6 +18,7 @@ export const productType = defineType({
       options: {
         source: 'name',
       },
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'price',
@@ -32,7 +31,15 @@ export const productType = defineType({
       title: 'Rating',
       type: 'array',
       of: [{type: 'number'}],
-      initialValue: [randomNumber(1, 5)],
+      initialValue: [
+        1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+        5, 5, 5,
+      ],
+      options: {
+        layout: 'grid',
+      },
+      readOnly: true,
+      hidden: true,
     }),
     defineField({
       name: 'images',
@@ -46,6 +53,7 @@ export const productType = defineType({
       title: 'Tags',
       type: 'array',
       of: [{type: 'string'}],
+      validation: (rule) => rule.required(),
       options: {
         list: [
           {title: 'Men', value: 'men'},
@@ -68,6 +76,7 @@ export const productType = defineType({
       name: 'sizes',
       title: 'Sizes',
       type: 'array',
+      validation: (rule) => rule.required(),
       of: [
         {
           type: 'object',
@@ -88,6 +97,28 @@ export const productType = defineType({
           ],
         },
       ],
+    }),
+    defineField({
+      name: 'totalSales',
+      title: 'Total sales',
+      type: 'number',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'discount',
+      title: 'Discount in %',
+      type: 'number',
+    }),
+    defineField({
+      name: 'seasonDiscount',
+      title: 'Season discount in %',
+      type: 'number',
+    }),
+    defineField({
+      name: 'isNewest',
+      title: 'New?',
+      description: 'Is this the newest product?',
+      type: 'boolean',
     }),
   ],
 })
