@@ -68,6 +68,7 @@ export const productType = defineType({
           {title: 'Workout', value: 'workout'},
           {title: 'Golf', value: 'golf'},
           {title: 'Sandals', value: 'sandals'},
+          {title: 'Volleyball', value: 'volleyball'},
         ],
         layout: 'grid',
       },
